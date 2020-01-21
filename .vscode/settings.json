@@ -1,0 +1,14 @@
+{
+    "workbench.colorCustomizations": {
+        "[One Dark Pro Bold]": {
+            "editor.background": "#070505"
+        },
+        "tab.unfocusedActiveBorder": "#fff0"
+    },
+    "editor.fontSize": 16,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontWeight": "bold"
+}
