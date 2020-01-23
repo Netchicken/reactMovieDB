@@ -1,14 +1,24 @@
 {
-    "workbench.colorCustomizations": {
-        "[One Dark Pro Bold]": {
-            "editor.background": "#070505"
-        },
-        "tab.unfocusedActiveBorder": "#fff0"
+  "workbench.colorCustomizations": {
+    "[One Dark Pro Bold]": {
+      "editor.background": "#070505"
     },
-    "editor.fontSize": 16,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.fontSize": 16,
-    "terminal.integrated.fontWeight": "bold"
+    "tab.unfocusedActiveBorder": "#fff0"
+  },
+  "editor.fontSize": 16,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeight": "bold",
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.snippetSuggestions": "top",
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "razor": "html"
+  },
+  "html-css-class-completion.enableEmmetSupport": true
 }

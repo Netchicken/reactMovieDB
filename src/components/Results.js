@@ -8,13 +8,17 @@ import Result from "./Result";
 //Search: Array(10)
 //0: {Title: "The Big Lebowski", Year: "1998", imdbID: "tt0118715", Type: "movie", Poster: "https:/
 
-function Results({ resultData }) {
-  console.log("resultData ", resultData);
+function Results({ resultData, openPopup }) {
+ // console.log("resultData ", resultData);
   return (
     <section className="results">
-      {resultData.map(result => (
-        <Result key={result.imdbID} result={result} />
-      ))}
+      {typeof resultData != "undefined" ? ( //data not passing through
+        resultData.map(result => (
+          <Result key={result.imdbID} result={result} openPopup={openPopup} />
+        ))
+      ) : (
+        <p>No data</p>
+      )}
     </section>
   );
 }
