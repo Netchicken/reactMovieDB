@@ -11,8 +11,10 @@ import Result from "./Result";
 function Results({ resultData, openPopup, movieProviders }) {
  // console.log("resultData ", resultData);
   return (
-    <section className="results">
+      <section className="results">
+       
       {typeof resultData != "undefined" ? ( //data not passing through
+        
         resultData.map(result => (
           <Result key={result.imdbID} result={result} openPopup={openPopup}  />
         ))

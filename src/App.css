@@ -58,7 +58,12 @@ header h1 {
   font-weight: 500;
   text-align: center;
 }
-
+header h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 200;
+  text-align: center;
+}
 main {
   width: 100%;
   max-width: 960px;
@@ -99,7 +104,6 @@ section {
 }
 
 .results .result {
-  width: 33.333%;
   min-width: 250px;
   padding: 15px;
   display: flex;
@@ -118,13 +122,30 @@ section {
   font-weight: 600;
   padding: 10px;
   background: #445565;
-  flex: 1 1 100%;
+  flex: auto;
   transition: 0.4s ease-out;
 }
 
 .results .result:hover h3 {
   background: #fff;
   color: #223343;
+}
+
+.provider {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 0px -15px 30px; */
+}
+
+.provider a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.provider img {
+  /* flex: 1 1 50%; */
 }
 
 .popup {
@@ -168,9 +189,9 @@ section {
 }
 
 .popup .content .plot img {
-  flex: 1 1 50%;
+  /* flex: 1 1 50%; */
   max-width: 300px;
-  padding: 0px 15px;
+  /* padding: 0px 15px; */
 }
 
 .popup .content .plot p {

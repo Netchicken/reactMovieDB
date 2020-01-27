@@ -17,9 +17,9 @@ function Popup({ selected, closePopup, movieProviders  }) {
           <p>{selected.Plot}</p>
           
           {typeof movieProviders != "undefined" ? ( //data not passing through
-            movieProviders.map(result => <Provider key={result.id} result={result} />)
+            movieProviders.map(result => <p><Provider key={result.id} result={result} /></p>)
           ) : (
-            <p>No data</p>
+            <p>No Providers</p>
           )}
         </div>
         <button className="close" onClick={closePopup}>

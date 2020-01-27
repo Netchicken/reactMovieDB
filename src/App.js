@@ -125,6 +125,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <h1>Movie Database</h1>
+        <h4>Click on movie to see plot and provider</h4>
       </header>
       <main>
         <Search handleInput={handleInput} search={searchCall} />
