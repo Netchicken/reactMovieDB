@@ -17,7 +17,7 @@ function App() {
   });
 
   const [apiResults, setApiResults] = useState([]);
-  const [searchForPopup, setsearchForPopup] = useState({});
+  //const [state.selected, setstate.selected] = useState({});
   //const [providerForPopup, setproviderForPopup] = useState([]);
   //const [fiveDays, setFiveDays] = useState({});
 
@@ -55,8 +55,7 @@ function App() {
             results: result
           }; //pass results to state clear out providers
         });
-
-        //  movieProviders("The Big Lebowski"); //get the provider data for the movie selected
+       
       });
 
       //  console.log("State Results", state.results);
@@ -66,15 +65,23 @@ function App() {
   function movieProviders(name) {
     //https://rapidapi.com/utelly/api/utelly/endpoints
     console.log("movieProviders name", name);
-    Utelly(name)
-      .then(({ locations } ) => {
-        console.log("UTellyMovieProviders response", locations);
-
-        console.log("results.locations", locations);
-        providerForPopup = locations;
-        // setState({
-        //   provider: [...state.provider, response.results.locations] //append results to state
-        // });
+    // Utelly(name)
+    const options = {
+      headers: {
+        "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+        "x-rapidapi-key": "8a2f94d881msh0cee2e1de8e452ep14186ajsnc0a39f09d0de"
+      }
+    };
+    axios
+      .get("https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + name + "&country=uk", options)
+      .then(data => {
+        const result = data.data.results[0].locations;
+        console.log("Api Utelly ", result);
+       
+        providerForPopup = result;
+        setState(prevState => {
+          return { ...prevState, provider: result };
+        });
       })
       .catch(err => {
         console.log(err);
@@ -98,13 +105,12 @@ function App() {
       let result = data;
       console.log("openPopup search result", result);
 
-      // setsearchForPopup(result);
+      // setstate.selected(result);
       // providerTitle = result.Title;
 
       setState(prevState => {
         return { ...prevState, selected: result };
       });
-
       movieProviders(result.Title); //get the provider data for the movie selected
     });
   }
@@ -116,20 +122,16 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <h1>Movie Database</h1>
       </header>
       <main>
         <Search handleInput={handleInput} search={searchCall} />
         <Results resultData={state.results} openPopup={openPopup} />
 
-        {typeof searchForPopup.Title != "undefined" ? ( //if its not equal to undefined show popup
-          <Popup
-            selected={searchForPopup}
-            closePopup={closePopup}
-            provider={providerForPopup}
-          /> //show popup
+        {typeof state.selected.Title != "undefined" ? ( //if its not equal to undefined show popup
+          <Popup selected={state.selected} closePopup={closePopup} movieProviders={state.provider} /> //show popup
         ) : (
           false //otherwise show nothing
         )}

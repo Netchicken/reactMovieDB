@@ -1,22 +1,23 @@
 import React from "react";
 import Provider from './Provider'
 
-function Popup({ searchForPopup, closePopup, provider  }) {
- // console.log("Popup title", searchForPopup.Title);
-  console.log("providers", provider);
+function Popup({ selected, closePopup, movieProviders  }) {
+ // console.log("Popup title", selected.Title);
+  console.log("providers", movieProviders);
 
   return (
     <section className="popup">
       <div className="content">
         <h2>
-          {searchForPopup.Title} <span>({searchForPopup.Year})</span>
+          {selected.Title} <span>({selected.Year})</span>
         </h2>
-        <p className="rating">Rating: {searchForPopup.imdbRating}</p>
+        <p className="rating">Rating: {selected.imdbRating}</p>
         <div className="plot">
-          <img src={searchForPopup.Poster} />
-          <p>{searchForPopup.Plot}</p>
-          {typeof provider != "undefined" ? ( //data not passing through
-            provider.map(result => <Provider key={result.id} result={result} />)
+          <img src={selected.Poster} />
+          <p>{selected.Plot}</p>
+          
+          {typeof movieProviders != "undefined" ? ( //data not passing through
+            movieProviders.map(result => <Provider key={result.id} result={result} />)
           ) : (
             <p>No data</p>
           )}

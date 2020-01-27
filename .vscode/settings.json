@@ -28,5 +28,11 @@
 "editor.minimap.showSlider": "always",
 
 
-  "html-css-class-completion.enableEmmetSupport": true
+  "html-css-class-completion.enableEmmetSupport": true,
+  "zenMode.hideLineNumbers": false,
+  "workbench.tree.indent": 4,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "prettier.printWidth": 180,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.jsxSingleQuote": true
 }

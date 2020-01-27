@@ -7,6 +7,7 @@
 // Poster: "https://m.media
 
 import React from "react";
+//import Provider from "./Provider";
 
 function Result({ result, openPopup, movieProviders }) {
   //this took 2 hours to fix! needed { }
@@ -17,6 +18,7 @@ function Result({ result, openPopup, movieProviders }) {
     <div className="result" onClick={() => openPopup(result.imdbID) }>
       <img src={result.Poster} />
       <h3>{result.Title}</h3>
+     
     </div>
   );
 }
