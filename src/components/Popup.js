@@ -1,18 +1,25 @@
 import React from "react";
+import Provider from './Provider'
 
-function Popup({ selected, closePopup, movieProviders}) {
-  console.log("Popup", selected.Title);
-  movieProviders(selected.Title);
+function Popup({ searchForPopup, closePopup, provider  }) {
+ // console.log("Popup title", searchForPopup.Title);
+  console.log("providers", provider);
+
   return (
     <section className="popup">
       <div className="content">
         <h2>
-          {selected.Title} <span>({selected.Year})</span>
+          {searchForPopup.Title} <span>({searchForPopup.Year})</span>
         </h2>
-        <p className="rating">Rating: {selected.imdbRating}</p>
+        <p className="rating">Rating: {searchForPopup.imdbRating}</p>
         <div className="plot">
-          <img src={selected.Poster} />
-          <p>{selected.Plot}</p>
+          <img src={searchForPopup.Poster} />
+          <p>{searchForPopup.Plot}</p>
+          {typeof provider != "undefined" ? ( //data not passing through
+            provider.map(result => <Provider key={result.id} result={result} />)
+          ) : (
+            <p>No data</p>
+          )}
         </div>
         <button className="close" onClick={closePopup}>
           Close

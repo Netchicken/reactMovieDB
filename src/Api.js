@@ -8,31 +8,30 @@ import axios from "axios";
 
 const apiUrl = "http://www.omdbapi.com/?apikey=9189dcef";
 
-
 export async function getApiSearch(event, search) {
-         return await apiSearch(event, search);
-       }
-
+  return await apiSearch(event, search);
+}
 
 export function ApiSearchFetch(event, search) {
   if (event.key === "Enter") {
     const searchUrl = apiUrl + "&s=" + search;
 
     return fetch(searchUrl)
-      .then(res => res.json()).then(res => res.Search)
+      .then(res => res.json())
+      .then(res => res.Search);
   }
 }
 //need async to get .then on app.js
-export async  function apiSearch(event, search) {
+export async function apiSearch(event, search) {
   if (event.key === "Enter") {
     let searchUrl = apiUrl + "&s=" + search;
-  
+
     //if no method is provided, GET will be used as the default value.
-   await axios(searchUrl).then(({ data }) => {
-   //   console.log("ApiResult raw data", data);
+    await axios(searchUrl).then(({ data }) => {
+      //   console.log("ApiResult raw data", data);
       //don't forget {data} to deconstruct down to the data layer else use data.data
       const result = data.Search;
-console.log("Api Result search ", result);
+      console.log("Api Result search ", result);
       return result; //this is what the json tree is returning data/data/Search/all the results
 
       //   console.log("Search data", result);
@@ -40,3 +39,36 @@ console.log("Api Result search ", result);
     });
   }
 }
+
+export async function Utelly(name) {
+  //https://rapidapi.com/utelly/api/utelly/endpoints
+  const options = {
+    headers: {
+      "x-rapidapi-host":
+        "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+      "x-rapidapi-key": "8a2f94d881msh0cee2e1de8e452ep14186ajsnc0a39f09d0de"
+    }
+  };
+  await axios
+    .get(
+      "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" +
+        name +
+        "&country=uk",
+      options
+    )
+    .then(data => {
+      const result = data.data.results[0].locations;
+      console.log("Api Utelly ", result);
+      return result; 
+    });
+}
+
+
+// { data: { … }, status: 200, statusText: "OK", headers: { … }, config: { … }, … }
+// data:
+// results: Array(1)
+// 0:
+// id: "5d97daa59a76a40056de5ad7"
+// picture: "https://utellyassets9-1.imgix.net/api/Images/94b2e179ba793b2aa5a3eee71fde46aa/Redirect"
+// name: "The Big Lebowski"
+// locations: (6)[{ … }, { … }, { … }, { … }, { … }, { … }]
