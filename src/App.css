@@ -102,7 +102,7 @@ section {
   flex-wrap: wrap;
   margin: 0px -15px;
 }
-
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 .results .result {
   min-width: 250px;
   padding: 15px;
@@ -133,6 +133,7 @@ section {
 
 .provider {
   display: flex;
+  /* align-items: flex-start; */
   flex-wrap: wrap;
   /* margin: 0px -15px 30px; */
 }
@@ -145,9 +146,22 @@ section {
 }
 
 .provider img {
-  /* flex: 1 1 50%; */
+  align-items: flex-start;
 }
 
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 0px 10px;
+  flex: 1 1 50%;
+  padding: 5px;
+  border-radius: 25px;
+  width: 50%;
+  height: 55px;
+  justify-content: flex-end;
+  border: 1px solid rgb(173, 187, 209);
+  box-sizing: border-box;
+}
 .popup {
   position: fixed;
   top: 0;
@@ -189,8 +203,9 @@ section {
 }
 
 .popup .content .plot img {
+  align-self: flex-start;
   /* flex: 1 1 50%; */
-  max-width: 300px;
+  /* max-width: 300px; */
   /* padding: 0px 15px; */
 }
 

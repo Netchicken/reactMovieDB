@@ -44,25 +44,27 @@ export async function Utelly(name) {
   //https://rapidapi.com/utelly/api/utelly/endpoints
   const options = {
     headers: {
-      "x-rapidapi-host":
-        "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+      "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
       "x-rapidapi-key": "8a2f94d881msh0cee2e1de8e452ep14186ajsnc0a39f09d0de"
     }
   };
   await axios
-    .get(
-      "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" +
-        name +
-        "&country=uk",
-      options
-    )
+    .get("https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + name + "&country=uk", options)
     .then(data => {
-      const result = data.data.results[0].locations;
-      console.log("Api Utelly ", result);
-      return result; 
+      var result = data.data.results[0].locations;
+      console.log("Utelly result API", result);
+      return result;
+      //console.log("Api Utelly ", result);
+
+      // providerForPopup = result;
+      // setState(prevState => {
+      //   return { ...prevState, provider: result };
+      // });
+    })
+    .catch(err => {
+      console.log(err);
     });
 }
-
 
 // { data: { … }, status: 200, statusText: "OK", headers: { … }, config: { … }, … }
 // data:

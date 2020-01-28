@@ -14,13 +14,19 @@ function Popup({ selected, closePopup, movieProviders  }) {
         <p className="rating">Rating: {selected.imdbRating}</p>
         <div className="plot">
           <img src={selected.Poster} />
+                     
           <p>{selected.Plot}</p>
-          
+         
           {typeof movieProviders != "undefined" ? ( //data not passing through
-            movieProviders.map(result => <p><Provider key={result.id} result={result} /></p>)
+              movieProviders.map(result =>
+                 <div className = "box">
+                <Provider key={result.id} result={result} />
+                </div>
+              )
           ) : (
             <p>No Providers</p>
-          )}
+              )}
+          
         </div>
         <button className="close" onClick={closePopup}>
           Close

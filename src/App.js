@@ -55,17 +55,24 @@ function App() {
             results: result
           }; //pass results to state clear out providers
         });
-       
       });
 
       //  console.log("State Results", state.results);
     }
   };
 
-  function movieProviders(name) {
+  async function movieProviders(name) {
     //https://rapidapi.com/utelly/api/utelly/endpoints
-    console.log("movieProviders name", name);
-    // Utelly(name)
+    // console.log("movieProviders name", name);
+    // await Utelly(name).then(result => {
+    //   console.log("Api Utelly ", result);
+
+    //   providerForPopup = result;
+    //   setState(prevState => {
+    //     return { ...prevState, provider: result };
+    //   });
+    // });
+
     const options = {
       headers: {
         "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
@@ -77,7 +84,7 @@ function App() {
       .then(data => {
         const result = data.data.results[0].locations;
         console.log("Api Utelly ", result);
-       
+
         providerForPopup = result;
         setState(prevState => {
           return { ...prevState, provider: result };
@@ -97,7 +104,7 @@ function App() {
     });
   };
 
-  function openPopup(id) {
+   function openPopup(id) {
     // console.log("openPopup ", id);
     let searchUrl = apiUrl + "&i=" + id;
     console.log("openPopup searchURL", searchUrl);
@@ -112,8 +119,10 @@ function App() {
         return { ...prevState, selected: result };
       });
       movieProviders(result.Title); //get the provider data for the movie selected
-    });
-  }
+    
+      });
+  };
+  
 
   const closePopup = () => {
     setState(prevState => {
