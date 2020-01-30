@@ -1,3 +1,4 @@
+//TODO move the api calls to here from the app.js 
 import axios from "axios";
 
 //https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/
@@ -22,22 +23,30 @@ export function ApiSearchFetch(event, search) {
   }
 }
 //need async to get .then on app.js
-export async function apiSearch(event, search) {
-  if (event.key === "Enter") {
+export const apiSearch =  search => {
+// if (event.key === "Enter") {
     let searchUrl = apiUrl + "&s=" + search;
 
-    //if no method is provided, GET will be used as the default value.
-    await axios(searchUrl).then(({ data }) => {
-      //   console.log("ApiResult raw data", data);
-      //don't forget {data} to deconstruct down to the data layer else use data.data
-      const result = data.Search;
-      console.log("Api Result search ", result);
-      return result; //this is what the json tree is returning data/data/Search/all the results
+    return new Promise((resolve, reject) => {
 
-      //   console.log("Search data", result);
-      //     return result;
-    });
-  }
+      //if no method is provided, GET will be used as the default value.
+      axios.get(searchUrl).then(({ data }) => {
+        //   console.log("ApiResult raw data", data);
+        //don't forget {data} to deconstruct down to the data layer else use data.data
+        const result = data.Search;
+        console.log("Api Result search ", result);
+        resolve(result);
+        return;
+        //return result; //this is what the json tree is returning data/data/Search/all the results
+
+        //   console.log("Search data", result);
+        //     return result;
+      }).catch(err => {
+        reject(err.message);
+        return;
+      });
+    })
+ // }
 }
 
 export async function Utelly(name) {
@@ -65,6 +74,31 @@ export async function Utelly(name) {
       console.log(err);
     });
 }
+
+
+//https://github.com/drminnaar/noteworx-react-mongodb/blob/master/Client/services/note-service.js
+export const UtellyNEW = name  => {
+  const options = {
+    headers: {
+      "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+      "x-rapidapi-key": "8a2f94d881msh0cee2e1de8e452ep14186ajsnc0a39f09d0de"
+    }
+  };
+  return new Promise((resolve, reject) => {
+    axios
+      .get("https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + name + "&country=uk", options)
+      .then(data => {
+        var result = data.data.results[0].locations;
+        resolve(result);
+        return;
+      })
+      .catch(error => {
+        reject(error.message);
+        return;
+      });
+  });
+
+};
 
 // { data: { … }, status: 200, statusText: "OK", headers: { … }, config: { … }, … }
 // data:
