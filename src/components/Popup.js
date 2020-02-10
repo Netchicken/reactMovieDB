@@ -13,7 +13,7 @@ function Popup({ selected, closePopup, movieProviders  }) {
         </h2>
         <p className="rating">Rating: {selected.imdbRating}</p>
         <div className="plot">
-          <img src={selected.Poster} />
+          <img src={selected.Poster} alt = "text"/>
                      
           <p>{selected.Plot}</p>
          

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Search from "./components/search";
+import Search from "./components/Search";
 import Results from "./components/Results";
 import axios from "axios";
 import Popup from "./components/Popup";
