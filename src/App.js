@@ -17,10 +17,7 @@ function App() {
   });
 
   const [apiResults, setApiResults] = useState([]);
-  //let providerForPopup = [];
-  // var providerTitle = "";
 
-  // const apiUrl = "http://www.omdbapi.com/?apikey=9189dcef";
   const searchCall = async event => {
     if (event.key === "Enter") {
       apiSearch(state.search)
@@ -44,7 +41,7 @@ function App() {
       .then(result => {
         console.log("Api Utelly  from Api.js ", result);
 
-       // providerForPopup = result;
+        // providerForPopup = result;
         setState(prevState => {
           return { ...prevState, provider: result };
         });
@@ -65,7 +62,7 @@ function App() {
   };
 
   function openPopup(id) {
-    const apiUrl = "http://www.omdbapi.com/?apikey=9189dcef";
+    const apiUrl = "https://www.omdbapi.com/?apikey=9189dcef";
     // console.log("openPopup ", id);
     let searchUrl = apiUrl + "&i=" + id;
     console.log("openPopup searchURL", searchUrl);
