@@ -6,7 +6,7 @@ import axios from "axios";
 // Search: Array(10)
 // 0: {Title: "The Big Lebowski",
 
-const apiUrl = "http://www.omdbapi.com/?apikey=9189dcef";
+const apiUrl = "https://www.omdbapi.com/?apikey=9189dcef";
 
 export async function getApiSearch(event, search) {
   return await apiSearch(event, search);
