@@ -1,4 +1,3 @@
-//TODO move the api calls to here from the app.js 
 import axios from "axios";
 
 //https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/
